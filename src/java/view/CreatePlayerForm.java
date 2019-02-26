@@ -45,7 +45,9 @@ public class CreatePlayerForm extends HttpServlet {
             out.println("First name:<br>");
             out.println("<input type=\"text\" name=\"firstName\" value=\"Mickey\"><br>");
             out.println("Last name:<br>");
-            out.println("<input type=\"text\" name=\"lastName\" value=\"Mouse\"><br><br>");       
+            out.println("<input type=\"text\" name=\"lastName\" value=\"Mouse\"><br><br>"); 
+              out.println("Username:<br>");
+            out.println("<input type=\"text\" name=\"username\" value=\"Mouse\"><br><br>");       
             out.println("Email:<br>");
             out.println("<input type=\"text\" name=\"email\" value=\"abc@gmail.com\"><br><br>");  
             out.println("<input type=\"submit\" value=\"Submit\">");
@@ -74,6 +76,13 @@ public class CreatePlayerForm extends HttpServlet {
     private void submit(Map<String, String[]> values) {
        PlayerLogic logic = new PlayerLogic();
        logic.createEntity(values);
+        System.out.println("okay");
+        
+       UsernameLogic usernameLogic  = new UsernameLogic();
+       Username username = usernameLogic.createEntity(values);
+       usernameLogic.add(username);
+       
+       
     }
     /**
      * Handles the HTTP <code>GET</code> method.
